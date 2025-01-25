@@ -40,9 +40,9 @@ function Login() {
                 handleSuccess(message);
                 localStorage.setItem('token', jwtToken);
                 localStorage.setItem('UserName', name);
-                localStorage.setItem('UserID', userId);
+                localStorage.setItem('UserId', userId);
                 setTimeout(() => {
-                    navigate('/')
+                    navigate('/home')
                 }, 2000)
             } else if (error) {
                 const details = error?.details[0].message;
@@ -50,7 +50,6 @@ function Login() {
             } else if (!success) {
                 handleError(message);
             }
-            console.log(result);
         } catch (err) {
             handleError(err);
         }
