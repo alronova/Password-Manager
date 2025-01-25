@@ -41,8 +41,8 @@ function Login() {
                 localStorage.setItem('token', jwtToken);
                 localStorage.setItem('UserName', name);
                 localStorage.setItem('UserId', userId);
-                setTimeout(() => {
-                    navigate(to='/')
+                setTimeout( async() => {
+                    await navigate('/')
                 }, 2000)
             } else if (error) {
                 const details = error?.details[0].message;
