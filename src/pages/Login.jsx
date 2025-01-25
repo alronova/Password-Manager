@@ -42,7 +42,7 @@ function Login() {
                 localStorage.setItem('UserName', name);
                 localStorage.setItem('UserId', userId);
                 setTimeout(() => {
-                    navigate('/home')
+                    navigate(to='/')
                 }, 2000)
             } else if (error) {
                 const details = error?.details[0].message;
