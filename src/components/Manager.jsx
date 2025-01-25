@@ -12,7 +12,7 @@ const Manager = () => {
   const [form, setform] = useState({ website: "", mail: "", password: "" });
   const [passwordArray, setPasswordArray] = useState([]);
   const UserName = localStorage.getItem("UserName");
-  const UserId = localStorage.getItem("UserID");
+  const UserId = localStorage.getItem("UserId");
 
   const getPasswords = async () => {
     let req = await fetch("https://password-manager-i5cj.onrender.com/pass/getCredential", {
