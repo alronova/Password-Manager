@@ -30,7 +30,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/signup" element={!isLoggedIn ? <Signup /> : <Navigate to="/" />} />
-          <Route path="/login" element={!isLoggedIn ? <Login setIsLoggedIn={setIsLoggedIn} /> : <Navigate to="/" />} />
+          <Route path="/login" element={!isLoggedIn ? <Login /> : <Navigate to="/" />} />
           <Route path="/" element={
             <ProtectedRoute>
               <Home />

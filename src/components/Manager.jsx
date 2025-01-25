@@ -99,7 +99,7 @@ const Manager = () => {
     try {
       const confirmed = confirm("Do you really want to delete this password?");
       if (!confirmed) return;
-      console.log(id);
+      // console.log(id);
 
       const response = await fetch(
         "https://password-manager-i5cj.onrender.com/pass/deleteCredential",
@@ -149,10 +149,10 @@ const Manager = () => {
       });
       const msg = await res.json();
       const data = msg.updatedUser;
-      console.log(data);
+      // console.log(data);
 
       setform({ website: data.website, mail: data.mail, password: "" });
-      console.log(form);
+      // console.log(form);
       toast.success("Edit your Credentials and save it!", {
         position: "top-right",
         autoClose: 5000,
@@ -173,7 +173,7 @@ const Manager = () => {
       body: JSON.stringify({ userId: UserId, pass, credId: id }),
     });
     let res = await req.json();
-    console.log(res.success);
+    // console.log(res.success);
     if (res.success) {
       alert(`the required password for '${res.website}' is: "${res.decKey}"`);
     } else {
