@@ -10,8 +10,7 @@ const Navbar = () => {
     try {
       localStorage.removeItem('token');
       localStorage.removeItem('UserName');
-      localStorage.removeItem('passwords');
-      localStorage.removeItem('UserEnrollmentNumber');
+      localStorage.removeItem('UserId');
       handleSuccess('Log Out Successfully');
       setTimeout(() => {
           navigate('/login');
