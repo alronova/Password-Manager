@@ -15,7 +15,7 @@ const Manager = () => {
   const UserId = localStorage.getItem("UserID");
 
   const getPasswords = async () => {
-    let req = await fetch("http://localhost:8080/pass/getCredential", {
+    let req = await fetch("https://password-manager-i5cj.onrender.com/pass/getCredential", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: UserId }),
@@ -66,7 +66,7 @@ const Manager = () => {
         console.log(passwordData);
         setPasswordArray([...passwordArray, passwordData]);
         setform({ website: "", mail: "", password: "", id: "" });
-        await fetch("http://localhost:8080/pass/saveCredential", {
+        await fetch("https://password-manager-i5cj.onrender.com/pass/saveCredential", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ ...passwordData, userId: UserId }),
@@ -103,7 +103,7 @@ const Manager = () => {
       console.log(id);
 
       const response = await fetch(
-        "http://localhost:8080/pass/deleteCredential",
+        "https://password-manager-i5cj.onrender.com/pass/deleteCredential",
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
@@ -143,7 +143,7 @@ const Manager = () => {
       "If you edit the password, and do not save it then the older saved credentials will also be deleted."
     );
     if (sure) {
-      const res = await fetch("http://localhost:8080/pass/findCredential", {
+      const res = await fetch("https://password-manager-i5cj.onrender.com/pass/findCredential", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: UserId, credId: id }),
@@ -168,7 +168,7 @@ const Manager = () => {
 
   const decryptPassword = async (id) => {
     let pass = prompt("Enter the Password of your Password Manager Account:");
-    let req = await fetch("http://localhost:8080/pass/decryptCredential", {
+    let req = await fetch("https://password-manager-i5cj.onrender.com/pass/decryptCredential", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: UserId, pass, credId: id }),

@@ -4,6 +4,7 @@ import { handleError, handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
 
 const Navbar = () => {
+  const navigate = useNavigate();
 
   const handleLogout = (e) => {
     try {
@@ -13,7 +14,7 @@ const Navbar = () => {
       localStorage.removeItem('UserEnrollmentNumber');
       handleSuccess('Log Out Successfully');
       setTimeout(() => {
-          window.location.reload();
+          navigate('/login');
       }, 1500)
     } catch (error) {      
       handleError('Error Logging Out');

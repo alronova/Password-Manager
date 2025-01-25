@@ -26,7 +26,7 @@ function Login() {
             return handleError('Enrollment number and Password are required')
         }
         try {
-            const url = `http://localhost:8080/auth/login`;
+            const url = `https://password-manager-i5cj.onrender.com/auth/login`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -42,7 +42,7 @@ function Login() {
                 localStorage.setItem('UserName', name);
                 localStorage.setItem('UserID', userId);
                 setTimeout(() => {
-                    window.location.reload()
+                    navigate('/')
                 }, 2000)
             } else if (error) {
                 const details = error?.details[0].message;
