@@ -50,8 +50,8 @@ The Password Manager project is a secure and efficient platform designed to help
     npm start
 ```
 
-### 5. Make sure to change the variables accordingly...
+### 5. Changes in Environment Variables
    ```bash
-    cd Server
-    npm start
+    Make sure to replace placeholders like `<your-mongodb-uri>`, `<your-jwt-secret>`, and `<your-encryption-key>` with actual values relevant to your project.
+
 ```
