@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Docs from './pages/Docs'
 import Login from './pages/Login'
@@ -20,7 +20,7 @@ function App() {
   // Protected Route wrapper component
   const ProtectedRoute = ({ children }) => {
     if (!isLoggedIn) {
-      return window.location.pathname = '/login';
+      return <Navigate to="/login" />;
     }
     return children;
   };
@@ -29,8 +29,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/signup" element={!isLoggedIn ? <Signup /> : window.location.pathname = '/'} />
-          <Route path="/login" element={!isLoggedIn ? <Login setIsLoggedIn={setIsLoggedIn} /> : window.location.pathname = '/'} />
+          <Route path="/signup" element={!isLoggedIn ? <Signup /> : <Navigate to="/" />} />
+          <Route path="/login" element={!isLoggedIn ? <Login setIsLoggedIn={setIsLoggedIn} /> : <Navigate to="/" />} />
           <Route path="/" element={
             <ProtectedRoute>
               <Home />
@@ -44,7 +44,7 @@ function App() {
           <Route path="/docs" element={
             <Docs />
           } />
-          <Route path="*" element={!isLoggedIn ? <Login /> : window.location.pathname = '/'} />
+          <Route path="*" element={!isLoggedIn ? <Login /> : <Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
     </>
