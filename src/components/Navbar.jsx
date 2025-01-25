@@ -24,8 +24,8 @@ const Navbar = () => {
     <div className="Navbar">
       <div className="logo">Password Manager</div>
       <div className="links">
-        <a href="/Home">Home</a>
-        <a href="/Docs">How to Use?</a>
+        <a href="/home">Home</a>
+        <a href="/docs">How to Use?</a>
         <a href="#" onClick={handleLogout}>Log Out</a>
       </div>
     </div>
