@@ -10,7 +10,7 @@ function Login() {
         password: ''
     })
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -42,7 +42,7 @@ function Login() {
                 localStorage.setItem('UserName', name);
                 localStorage.setItem('UserId', userId);
                 setTimeout(() => {
-                    navigate('/')
+                  window.location.pathname = '/';
                 }, 2000)
             } else if (error) {
                 const details = error?.details[0].message;

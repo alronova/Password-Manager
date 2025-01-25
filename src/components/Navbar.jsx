@@ -1,10 +1,10 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import { handleError, handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleLogout = (e) => {
     try {
@@ -13,7 +13,7 @@ const Navbar = () => {
       localStorage.removeItem('UserId');
       handleSuccess('Log Out Successfully');
       setTimeout(() => {
-          navigate('/login');
+        window.location.pathname = '/login';
       }, 1500)
     } catch (error) {      
       handleError('Error Logging Out');

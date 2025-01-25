@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../utils";
 
@@ -11,7 +11,7 @@ function Signup() {
     password: "",
   });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     const copySignupInfo = { ...signupInfo };
@@ -41,7 +41,7 @@ function Signup() {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/login");
+          window.location.pathname = '/login';
         }, 1000);
       } else if (error) {
         console.log(error);

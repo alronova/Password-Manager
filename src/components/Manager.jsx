@@ -23,7 +23,7 @@ const Manager = () => {
     let passwords = await req.json();
     setPasswordArray(passwords.creds || []);
     setform({ website: "", mail: "", password: "", id: "" });
-    console.log("Passwords:", passwords.creds);
+    // console.log("Passwords:", passwords.creds);
   };
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const Manager = () => {
           form.password,
           SECRET_KEY
         ).toString();
-        console.log(encryptedPassword);
+        // console.log(encryptedPassword);
         const passwordData = {
           website: form.website,
           mail: form.mail,
@@ -63,7 +63,7 @@ const Manager = () => {
           password: encryptedPassword,
           id: uuidv4(),
         };
-        console.log(passwordData);
+        // console.log(passwordData);
         setPasswordArray([...passwordArray, passwordData]);
         setform({ website: "", mail: "", password: "", id: "" });
         await fetch("https://password-manager-i5cj.onrender.com/pass/saveCredential", {
@@ -86,8 +86,7 @@ const Manager = () => {
           window.location.reload();
         }, 2000);
       } catch (error) {
-        console.error("Encryption error:", error);
-        toast.error("Error saving password!");
+        toast.error("Error saving password!\n", error);
       }
     } else {
       toast.error("Please fill all fields correctly!");
