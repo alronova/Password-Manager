@@ -138,10 +138,6 @@ const Manager = () => {
   };
 
   const editPassword = async (id) => {
-    let sure = confirm(
-      "If you edit the password, and do not save it then the older saved credentials will also be deleted."
-    );
-    if (sure) {
       const res = await fetch("https://password-manager-i5cj.onrender.com/pass/findCredential", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -162,7 +158,6 @@ const Manager = () => {
         draggable: true,
         theme: "dark",
       });
-    }
   };
 
   const decryptPassword = async (id) => {
