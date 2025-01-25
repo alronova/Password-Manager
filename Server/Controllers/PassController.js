@@ -43,11 +43,6 @@ const findCredential = async (req, res) => {
       success: true,
       updatedUser: result.creds[0],
     });
-    await UserModel.findByIdAndUpdate(
-      userId,
-      { $pull: { creds: { _id: credId } } }, // Remove by unique ID instead
-      { new: true }
-    );
   } catch (error) {
     console.error(error);
     res.status(500).json({
