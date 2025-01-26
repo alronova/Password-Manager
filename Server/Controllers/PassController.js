@@ -12,15 +12,30 @@ const getCredential = async (req, res) => {
 const saveCredential = async (req, res) => {
   try {
     const { userId, id, website, mail, encKey, password } = req.body;
-    await UserModel.findByIdAndUpdate(
-      userId,
-      { $push: { creds: { id, website, mail, encKey, password } } },
+    let user = await UserModel.findOne(
+      {_id: userId, "creds.website": website, "creds.mail": mail},
+      { "creds.$": 1, _id: 0 });
+    if(user){
+    await UserModel.findOneAndUpdate(
+      {_id: userId,  "creds.website": website, "creds.mail": mail},
+      { $set: { "creds.$.encKey": encKey, "creds.$.password": password } },
       { new: true }
     );
     res.status(200).json({
-      message: "Password saved successfully",
+      message: "Password Updated successfully",
       success: true,
-    });
+    });}
+    else{
+      await UserModel.findByIdAndUpdate(
+        userId,
+        { $push: { creds: { website, mail, encKey, password, id } } },
+        { new: true }
+      );
+      res.status(200).json({
+        message: "Password saved successfully",
+        success: true,
+      });
+    }
   } catch (err) {
     console.log("Error in saving password", err);
     res.status(500).json({
